@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+
+public class Main
+{
+	public static void main(String[] args) {
+		
+		char[] str = {'m','e','e','r','a'};
+		
+		char ch = 'a';
+		boolean val = LinearSearch(str,ch);
+		System.out.println(val);
+	}
+	
+	static boolean LinearSearch(char[] arr, char c){
+	    
+	    if(arr.length == 0){
+	        System.exit(0);
+	    }
+	    
+	    for(int i=0;i<arr.length;i++){
+	        if(arr[i] == c){
+	            return true;
+	        }
+	    }
+	    
+	    return false;
+	}
+}
+
