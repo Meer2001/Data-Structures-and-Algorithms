@@ -1,0 +1,39 @@
+public class Main
+{
+	public static void main(String[] args) {
+		int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+		
+		int target = 8;
+		int start = 0;
+		int end = arr.length - 1;
+		int res = binarySearch(arr,target,start,end);
+		if(res == -1){
+		    System.out.println("No such element");
+		}
+		
+	}
+	
+	static int binarySearch(int[] arr, int target, int start, int end){
+	    
+	    int mid = start + ((end-start)/2);
+	    
+	    if(start <= end){
+	        
+    	        if(arr[mid] == target){
+    	        System.out.println("Target value present at index " + mid);
+    	        System.exit(0);
+    	    }
+    	    else if(arr[mid] > target){
+    	        end = mid - 1;
+    	        binarySearch(arr,target,start,end);
+    	    }
+    	    else if(arr[mid] < target){
+    	        start = mid + 1;
+    	        binarySearch(arr,target,start,end);
+    	    }
+	    }
+	    
+	    return -1;
+	}
+}
+
