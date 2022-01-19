@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int main()
+{
+    printf("Rotation of Array\n");
+
+    int rot;
+    printf("Rotation by - ");
+    scanf("%d",&rot);
+    
+    int arr[] = {1,2,3,4,5,6,7,8};
+    int size = sizeof(arr)/sizeof(arr[0]);
+    int temp[size],j=0;
+    
+    for(int i=0;i<rot;i++){
+        temp[j] = arr[i];
+        j++;
+    }
+    j=0;
+    for(int i=rot;i<size;i++){
+        arr[i-rot] = arr[i];
+    }
+    
+    for(int i=size-rot;i<size;i++){
+        arr[i] = temp[j];
+        j++;
+    }
+    
+    for(int i=0;i<size;i++){
+        printf("%d ",arr[i]);
+    }
+    return 0;
+}
+
