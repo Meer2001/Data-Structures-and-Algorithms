@@ -1,0 +1,96 @@
+import java.util.Scanner;
+
+
+public class Main
+{
+	public static void main(String[] args) {
+	    
+	    int size;
+	    System.out.println("Enter size of array: ");
+	    Scanner sc = new Scanner(System.in);
+	    size = sc.nextInt();
+		
+		int[] arr = new int[size];
+		
+		System.out.println("Enter elements of array: ");
+		for(int i=0;i<size;i++){
+		    arr[i] = sc.nextInt();
+		}
+		
+		bubbleSort(arr,size);
+		System.out.println();
+		selectionSort(arr,size);
+		System.out.println();
+		insertionSort(arr,size);
+		System.out.println();
+		
+		
+	}
+	
+	static void bubbleSort(int[] num, int size){
+	    
+	    for(int i=0;i<size;i++){
+	        for(int j=0;j<size-i-1;j++){
+	            if(num[j] > num[j+1]){
+	                int temp = num[j];
+	                num[j] = num[j+1];
+	                num[j+1] = temp;
+	            }
+	        }
+	    }
+	    
+	    System.out.println("Sorted array (BubbleSort): ");
+	    
+	    for(int i=0;i<size;i++){
+		    System.out.print(num[i] + " ");
+		}
+	}
+	
+	static void selectionSort(int[] num, int size){
+	    
+	    for(int i=0;i<size-1;i++){
+	        
+	            int small = i;
+	        
+	        for(int j=i+1;j<size;j++){
+	            
+	            if(num[small] > num[j]){
+	                small = j;
+	            }
+	        }
+	        
+	        int temp = num[small];
+	        num[small] = num[i];
+	        num[i] = temp;
+	    }
+	    
+	    System.out.println("Sorted array (SelectionSort): ");
+	    
+	    for(int i=0;i<size;i++){
+		    System.out.print(num[i] + " ");
+		}
+	}
+	
+	static void insertionSort(int[] num, int size){
+	    
+	    for(int i=1;i<size;i++){
+	        int key = num[i];
+	        int j = i-1;
+	        while(j>=0 && num[j] > key ){
+	            
+	            num[j+1] = num[j];
+	            j--;
+	        }
+	        
+	        num[j+1] = key;
+	        
+	    }
+	    
+	    System.out.println("Sorted array (InsertionSort): ");
+	    
+	    for(int i=0;i<size;i++){
+		    System.out.print(num[i] + " ");
+		}
+	}
+}
+
