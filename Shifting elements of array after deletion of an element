@@ -1,0 +1,42 @@
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main
+{
+	public static void main(String[] args) {
+		
+		int[] num = {1,2,3,4,5};
+		System.out.println("Enter number to delete: ");
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		
+		num = del(num,n);
+		
+		System.out.println(Arrays.toString(num));
+	}
+	
+	static int[] del(int[] arr, int n){
+	    
+	    int i,j;
+	    
+	    for(i=0;arr[i] != n && i<arr.length - 1;i++){
+		    continue;
+		}
+		if(i == arr.length - 1){
+		    return arr;
+		}
+		
+		for(j = i;j<arr.length - 1;j++){
+		    arr[j] = arr[j+1];
+		    i++;
+		}
+		arr[j] = 0;
+		
+		return arr;
+	    
+	}
+	
+	
+}
