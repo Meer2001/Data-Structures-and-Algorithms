@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+char stack[100];
+int top = -1;
+
+int precedencecheck(char ch){
+    if(ch == '^'){
+        return 3;
+    }else if(ch == '*' || ch == '/'){
+        return 2;
+    }else if(ch == '+' || ch == '-'){
+        return 1;
+    }
+    
+    return 0;
+}
+
+int main()
+{
+    char infix[100],postfix[100];
+    int length;
+    printf("Enter length of infix expression: ");
+    scanf("%d",&length);
+    
+    printf("Enter infix expression: ");
+    scanf("%s",infix);
+    
+    for(int i=0;i<length;i++){
+        char ch = infix[i];
+        if(isalpha(ch) != 0){
+            printf("%c",ch);
+        }else{
+            if(top == -1){
+                top++;
+                stack[top] = ch;
+            }
+            else if(ch == '('){
+                top++;
+                stack[top] = ch;
+            }else if(ch == ')'){
+                while(stack[top] != '('){
+                    top--;
+                    printf("%c",stack[top]);
+                    
+                }
+                top--;
+            }
+            else if(precedencecheck(ch) > stack[top]){
+                top++;
+                stack[top] = ch;
+            }else{
+                while(precedencecheck(ch) <= stack[top]){
+                    printf("%c",stack[top]);
+                    top--;
+                }
+                top++;
+                stack[top] = ch;
+            }
+        }
+    }
+    
+    while(top != -1){
+        printf("%c",stack[top]);
+        top--;
+    }
+
+    return 0;
+}
