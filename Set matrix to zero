@@ -1,0 +1,83 @@
+import java.util.Scanner;
+
+public class Main
+{
+	public static void main(String[] args) {
+	    
+	    int[][] mat = new int[10][10];
+	    Scanner sc =new Scanner(System.in);
+	    
+	    int[] ival = new int[10];
+	    int[] jval = new int[10];
+	    int s=0;
+	    
+	    
+	    for(int i=0;i<5;i++){
+	        for(int j=0;j<5;j++){
+	            mat[i][j] = sc.nextInt();
+	        }
+	    }
+	    
+	    System.out.println("Before");
+	    
+	    for(int i=0;i<5;i++){
+	        for(int j=0;j<5;j++){
+	            System.out.print(mat[i][j] + " ");
+	        }
+	        System.out.println();
+	    }
+	    
+	    for(int i=0;i<5;i++){
+	        for(int j=0;j<5;j++){
+	            if(mat[i][j] == 0){
+	                ival[s] = i;
+	                jval[s] = j;
+	                s++;
+	            }
+	        }
+	    }
+	    
+	    int length = s;
+	    for(s=0;s<length;s++){
+	        for(int k=0;k<5;k++){
+	           mat[ival[s]][k] = 0;
+	           mat[k][jval[s]] = 0;
+	       }
+	    }
+	    
+	    
+	    
+	    System.out.println("After");
+	    
+	    for(int i=0;i<5;i++){
+	        for(int j=0;j<5;j++){
+	            System.out.print(mat[i][j] + " ");
+	        }
+	        System.out.println();
+	    }
+		
+	}
+}
+
+// Input
+1 6 3 8 9
+3 3 5 2 8
+1 2 0 1 2
+0 9 8 7 6
+5 4 3 2 0
+
+//Output
+Before
+1 6 3 8 9 
+3 3 5 2 8 
+1 2 0 1 2 
+0 9 8 7 6 
+5 4 3 2 0 
+After
+0 6 0 8 0 
+0 3 0 2 0 
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+
+
